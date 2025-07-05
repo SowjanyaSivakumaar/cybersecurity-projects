@@ -17,7 +17,8 @@ The scan detected open ports like 135, 445, and 5357 on the localhost (127.0.0.1
 
 ## 🔗 Links
 - [📘 Vulnerability Scan Report](Vulnerability_Scan_Report.md)
--![Nmap scan output screenshot](https://private-user-images.githubusercontent.com/181477557/462759752-791a17f0-da91-41e6-93e4-dfb0cf42d818.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTE3MTUzNjEsIm5iZiI6MTc1MTcxNTA2MSwicGF0aCI6Ii8xODE0Nzc1NTcvNDYyNzU5NzUyLTc5MWExN2YwLWRhOTEtNDFlNi05M2U0LWRmYjBjZjQyZDgxOC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzA1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcwNVQxMTMxMDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kZGE2NzlkODg4ZTM1ZTk5OTFiNTI0MmFhMWI1NjhiNTU3NmI2YmM5NDBjYjIzMjUwYjZhMjUyNGMxYzZjYjA5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hGj9bUWc-MIf804vb0eFrJhy1m3W6_efDFnF7x6VIqA)
+-![Screenshot 2025-07-04 215046](https://github.com/user-attachments/assets/f2d39e89-19f6-48fd-b409-17d13e380618)
+
 
 
 ## 👩‍💻 Author
