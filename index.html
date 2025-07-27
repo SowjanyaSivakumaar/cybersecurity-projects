@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cybersecurity Awareness Portal</title>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  color: #f2f2f2;
+  opacity: 2;
+  overflow-x: hidden;
+}
+h1 {
+margin-bottom: 20px;
+margin-left: 12.7cm;
+margin-top: 20px;
+margin-right: 12cm;
+color: #ffffff;
+background-color: #000000;
+}
+h1:hover {
+  color: #767e05;
+}
+/* Heading styles - clean, modern, no glow */
+h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  text-shadow: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+/* Navbar styles */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav a {
+  color: #f2f2f2;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 20px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #767e05;
+}
+/* Hero / Landing section */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px;
+  background: transparent;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: auto;
+  color: #ffffff;
+}
+
+/* Glassy detailed sections */
+section.glass-section {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 16px;
+  padding: 40px 30px;
+  margin: 40px 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+section.glass-section:hover {
+  transform: scale(1.01);
+  border: #ffffff;
+}
+
+/* Buttons */
+button, .btn {
+  background-color: #010328;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: #000000;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 30px;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Scroll to top button */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  background-color: rgba(119, 117, 3, 0.7);;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: background-color 0.3s ease;
+}
+
+#scrollTopBtn:hover {
+  background-color: #000000;
+}
+
+/* Particle canvas full-screen background */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1 id="typed-text"></h1>
+  <nav>
+    <ul>
+    <a href="#home">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    </ul>
+  </nav>
+</header>
+<div class="floating-words"></div>
+<style>
+  #particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+}
+  /* Glass slider container */
+#glass-slider-container {
+  padding: 60px 20px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.glass-slider {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-cards {
+  display: flex;
+  transition: transform 0.4s ease;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  scrollbar-width: none;
+}
+
+.glass-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.glass-card {
+  min-width: 250px;
+  background: rgba(138, 146, 3, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 30px 20px;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.glass-card h3 {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  margin: 0;
+  text-align: center;
+}
+
+/* Navigation buttons */
+.slider-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 0 10px;
+  transition: background 0.3s;
+  z-index: 2;
+}
+
+.slider-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+</style>
+<section id="glass-slider-container">
+  <div class="glass-slider">
+    <button class="slider-btn" id="prevBtn">&#8592;</button>
+    <div class="glass-cards" id="glassCards">
+      <div class="glass-card" onclick="scrollToSection('cyber-basics')">
+        <h3>Cybersecurity Basics</h3>
+      </div>
+      <div class="glass-card" onclick="scrollToSection('malware-types')">
+        <h3>Malware Types</h3>
+      </div>
+      <div class="glass-card" onclick="scrollToSection('phishing')">
+        <h3>Phishing Attacks</h3>
+      </div>
+      <div class="glass-card" onclick="scrollToSection('network-security')">
+        <h3>Network Security</h3>
+      </div>
+      <div class="glass-card" onclick="scrollToSection('careers')">
+        <h3>Cybersecurity Careers</h3>
+      </div>
+      <div class="glass-card" onclick="scrollToSection('secure-coding')">
+        <h3>Secure Coding</h3>
+      </div>
+      <div class="glass-card" onclick="scrollToSection('ai-cybersecurity')">
+        <h3>AI in Cybersecurity</h3>
+      </div>
+      <div class="glass-card" onclick="scrollToSection('frameworks')">
+        <h3>Security Frameworks</h3>
+      </div>
+    </div>
+    <button class="slider-btn" id="nextBtn">&#8594;</button>
+  </div>
+</section>
+<style>
+  .topic-section {
+    padding: 4rem 2rem;
+    margin: 3rem auto;
+    max-width: 1100px;
+    background: #767e05;
+    opacity: 3;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    color: #000000;
+    transition: all 0.4s ease;
+  }
+  h2,h3,h4{
+    color: #c7c7c7;
+  }
+
+  .topic-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    color: #222;
+    border-left: 6px solid #000000;
+    padding-left: 0.6rem;
+  }
+
+  .topic-section ul {
+    margin-left: 1.2rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .topic-section p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+</style>
+<section id="cyber-basics" class="topic-section">
+  <h2>1. Cybersecurity Basics</h2>
+  <p>Cybersecurity refers to the practice of defending digital systems, networks, and data from malicious attacks. It's essential in protecting information, financial assets, and critical infrastructure across the globe.</p>
+
+  <h3>Core Concepts</h3>
+  <ul>
+    <li><strong>Confidentiality:</strong> Only authorized users can access sensitive data.</li>
+    <li><strong>Integrity:</strong> Ensures data is not altered or tampered with.</li>
+    <li><strong>Availability:</strong> Systems and data should be accessible when needed.</li>
+  </ul>
+
+  <h3>Why It Matters</h3>
+  <ul>
+    <li>Cybercrime damages cost trillions of dollars annually.</li>
+    <li>Individuals face identity theft and privacy invasion.</li>
+    <li>Businesses can lose data, reputation, and revenue.</li>
+    <li>Governments face national security threats.</li>
+  </ul>
+
+  <h3>Basic Protective Measures</h3>
+  <ul>
+    <li>Use strong and unique passwords.</li>
+    <li>Enable two-factor authentication (2FA).</li>
+    <li>Install antivirus and firewall tools.</li>
+    <li>Keep software and systems updated.</li>
+    <li>Be cautious of unknown links and attachments.</li>
+  </ul>
+</section>
+<section id="malware-types" class="topic-section">
+  <h2>2. Malware Types</h2>
+  <p>Malware is short for “malicious software” — programs designed to damage, exploit, or disable systems. Understanding different malware types helps users and organizations defend against cyberattacks effectively.</p>
+
+  <h3> Common Types of Malware</h3>
+  <ul>
+    <li><strong>Viruses:</strong> Attach themselves to files or programs and spread when the host is activated.</li>
+    <li><strong>Worms:</strong> Spread independently across networks without needing to attach to a host file.</li>
+    <li><strong>Trojans:</strong> Disguise themselves as legitimate software to trick users into executing them.</li>
+    <li><strong>Ransomware:</strong> Locks files or systems and demands payment for restoration.</li>
+    <li><strong>Spyware:</strong> Secretly collects user data without their knowledge or consent.</li>
+    <li><strong>Adware:</strong> Automatically displays unwanted advertisements that may redirect to harmful sites.</li>
+  </ul>
+
+  <h3>How Malware Spreads</h3>
+  <ul>
+    <li>Downloading from untrusted websites or sources</li>
+    <li>Clicking malicious email links or attachments</li>
+    <li>Infected USB drives and external storage</li>
+    <li>Drive-by downloads from compromised websites</li>
+  </ul>
+
+  <h3>Prevention Tips</h3>
+  <ul>
+    <li>Use reputable antivirus and anti-malware tools</li>
+    <li>Regularly update operating systems and apps</li>
+    <li>Don’t open suspicious emails or links</li>
+    <li>Perform regular system scans and backups</li>
+  </ul>
+</section>
+<section id="phishing" class="topic-section">
+  <h2>3. Phishing Attacks</h2>
+  <p>Phishing is a deceptive technique where attackers pretend to be trustworthy entities to steal sensitive data like passwords, credit card details, or login credentials.</p>
+
+  <h3>Types of Phishing</h3>
+  <ul>
+    <li><strong>Email Phishing:</strong> Most common form — fake emails with urgent requests or malicious links.</li>
+    <li><strong>Spear Phishing:</strong> Targeted attacks that use personal info to trick specific individuals.</li>
+    <li><strong>Whaling:</strong> Targets high-profile individuals like executives or government officials.</li>
+    <li><strong>Smishing:</strong> Phishing via SMS texts with dangerous links or requests.</li>
+    <li><strong>Vishing:</strong> Voice phishing through phone calls pretending to be tech support or banks.</li>
+  </ul>
+
+  <h3>How to Identify a Phishing Attempt</h3>
+  <ul>
+    <li>Unusual sender address or domain name</li>
+    <li>Spelling and grammar mistakes</li>
+    <li>Urgent or threatening tone</li>
+    <li>Unfamiliar links or attachments</li>
+    <li>Requests for sensitive information</li>
+  </ul>
+
+  <h3>Protection Measures</h3>
+  <ul>
+    <li>Enable spam filters and email authentication tools</li>
+    <li>Never click on suspicious links</li>
+    <li>Use multi-factor authentication (MFA)</li>
+    <li>Educate users with regular security awareness training</li>
+    <li>Report phishing emails to your IT or security team</li>
+  </ul>
+</section>
+<section id="network-security" class="topic-section">
+  <h2>4. Network Security</h2>
+  <p>Network security protects your IT infrastructure by securing both hardware and software technologies against unauthorized access, misuse, or theft.</p>
+
+  <h3>Key Components</h3>
+  <ul>
+    <li><strong>Firewalls:</strong> Control incoming/outgoing traffic using security rules.</li>
+    <li><strong>Intrusion Detection Systems (IDS):</strong> Monitor and alert on suspicious network activity.</li>
+    <li><strong>Intrusion Prevention Systems (IPS):</strong> Actively block detected threats in real-time.</li>
+    <li><strong>Virtual Private Networks (VPNs):</strong> Encrypt internet traffic for secure remote access.</li>
+    <li><strong>Network Access Control (NAC):</strong> Restrict device access based on compliance and policies.</li>
+  </ul>
+
+  <h3>Secure Network Design</h3>
+  <ul>
+    <li>Segment internal networks (e.g., guest, admin, IoT)</li>
+    <li>Use DMZs to isolate publicly accessible services</li>
+    <li>Apply role-based access controls (RBAC)</li>
+    <li>Monitor bandwidth and endpoint traffic behavior</li>
+  </ul>
+
+  <h3>Common Network Attacks</h3>
+  <ul>
+    <li><strong>Denial of Service (DoS):</strong> Overload systems to take them offline</li>
+    <li><strong>Man-in-the-Middle (MitM):</strong> Eavesdrop or alter communication between two parties</li>
+    <li><strong>Packet Sniffing:</strong> Monitor unencrypted traffic</li>
+    <li><strong>ARP Spoofing:</strong> Redirect traffic using false MAC addresses</li>
+  </ul>
+
+  <p>A layered defense strategy (defense-in-depth) is essential to keep network environments resilient against evolving cyber threats.</p>
+</section>
+<section id="careers" class="topic-section">
+  <h2>5. Cybersecurity Careers</h2>
+  <p>Cybersecurity is one of the fastest-growing fields globally, offering high-paying, stable, and mission-critical roles across industries. Below are top career paths you can explore:</p>
+
+  <h3>High-Demand Roles</h3>
+  <ul>
+    <li><strong>Security Analyst:</strong> Monitors, analyzes, and responds to security events. Works in a SOC (Security Operations Center).</li>
+    <li><strong>Penetration Tester (Ethical Hacker):</strong> Simulates attacks to find and fix vulnerabilities.</li>
+    <li><strong>Security Engineer:</strong> Designs secure systems, manages firewalls, and configures defense tools.</li>
+    <li><strong>Incident Responder:</strong> Handles breaches, minimizes damage, and investigates root causes.</li>
+    <li><strong>GRC Specialist:</strong> Focuses on Governance, Risk, and Compliance. Helps companies meet legal standards like GDPR.</li>
+    <li><strong>Chief Information Security Officer (CISO):</strong> Senior executive who manages the entire cybersecurity strategy of an organization.</li>
+  </ul>
+
+  <h3>Skills That Matter</h3>
+  <ul>
+    <li>Knowledge of operating systems (Linux, Windows)</li>
+    <li>Networking fundamentals and protocols</li>
+    <li>Threat detection tools (SIEMs like Splunk, QRadar)</li>
+    <li>Cloud security (AWS, Azure)</li>
+    <li>Scripting languages (Python, Bash, PowerShell)</li>
+    <li>Certifications like CompTIA Security+, CEH, CISSP</li>
+  </ul>
+
+  <h3>Certifications to Boost Your Resume</h3>
+  <ul>
+    <li><strong>CompTIA Security+:</strong> Entry-level, vendor-neutral</li>
+    <li><strong>Certified Ethical Hacker (CEH):</strong> Hacking techniques & tools</li>
+    <li><strong>Certified Information Systems Security Professional (CISSP):</strong> Senior-level management certification</li>
+    <li><strong>Google/IBM Cybersecurity Certificates:</strong> Beginner-friendly, career-starting</li>
+  </ul>
+
+  <p>Whether you're into offense (hacking), defense (monitoring), or policy (compliance), there's a cybersecurity career path for you.</p>
+</section>
+<section id="secure-coding" class="topic-section">
+  <h2>6. Secure Coding</h2>
+  <p>Secure coding is the practice of writing software that guards against security threats and vulnerabilities. It’s not just about fixing bugs — it's about preventing them from existing in the first place.</p>
+
+  <h3>Common Vulnerabilities</h3>
+  <ul>
+    <li><strong>SQL Injection:</strong> Unfiltered input in database queries.</li>
+    <li><strong>Cross-Site Scripting (XSS):</strong> Attacker injects scripts into web pages.</li>
+    <li><strong>Insecure Deserialization:</strong> Attackers manipulate serialized objects to execute code.</li>
+    <li><strong>Broken Authentication:</strong> Flaws in login systems.</li>
+  </ul>
+
+  <h3>Secure Coding Practices</h3>
+  <ul>
+    <li>Validate input and sanitize outputs</li>
+    <li>Use prepared statements with parameterized queries</li>
+    <li>Apply the principle of least privilege (PoLP)</li>
+    <li>Implement strong authentication and session management</li>
+    <li>Keep dependencies up to date</li>
+    <li>Conduct code reviews and static analysis scans</li>
+  </ul>
+
+  <h3>Tools & Frameworks</h3>
+  <ul>
+    <li><strong>OWASP Dependency-Check:</strong> Scans your project for vulnerable libraries</li>
+    <li><strong>SonarQube:</strong> Performs static code analysis</li>
+    <li><strong>Burp Suite:</strong> Security testing of web apps</li>
+    <li><strong>OWASP ZAP:</strong> Open-source security scanner</li>
+  </ul>
+
+  <p>Secure coding is not an option — it’s a necessity in a world where a single line of bad code can lead to massive breaches.</p>
+</section>
+<section id="ai-cybersecurity" class="topic-section">
+  <h2>7. AI in Cybersecurity</h2>
+  <p>Artificial Intelligence is transforming how we defend systems against cyber threats. It enables faster detection, automated response, and predictive analytics.</p>
+
+  <h3>Applications of AI</h3>
+  <ul>
+    <li><strong>Threat Detection:</strong> AI identifies anomalies and unusual behavior in massive datasets.</li>
+    <li><strong>Malware Analysis:</strong> Automatically classifies and disarms malware using AI models.</li>
+    <li><strong>Incident Response:</strong> Speeds up response through decision-making algorithms.</li>
+    <li><strong>Fraud Detection:</strong> Recognizes suspicious patterns in banking or e-commerce.</li>
+  </ul>
+
+  <h3>Benefits</h3>
+  <ul>
+    <li>Real-time monitoring at scale</li>
+    <li>Improved accuracy in identifying advanced threats</li>
+    <li>Reduces human workload and error</li>
+    <li>Handles massive volumes of network and endpoint data</li>
+  </ul>
+
+  <h3>Risks of Using AI</h3>
+  <ul>
+    <li><strong>Adversarial Attacks:</strong> Attackers trick AI with misleading data</li>
+    <li><strong>Bias in Models:</strong> Flawed training data can result in unfair or inaccurate outcomes</li>
+    <li><strong>Over-reliance:</strong> Too much trust in automation can miss context-sensitive threats</li>
+    <li><strong>AI-powered Attacks:</strong> Cybercriminals are using AI to craft better phishing, malware, and exploits</li>
+  </ul>
+
+  <p>As AI gets smarter, so do cybercriminals. Ethical AI usage and human oversight are critical for success in modern cybersecurity defense.</p>
+</section>
+<section id="frameworks" class="topic-section">
+  <h2>8. Security Frameworks & Compliance</h2>
+  <p>Security frameworks help organizations build consistent, reliable, and legally compliant cybersecurity strategies. These frameworks ensure best practices are followed and risks are managed effectively.</p>
+
+  <h3>Common Frameworks</h3>
+  <ul>
+    <li><strong>NIST (National Institute of Standards and Technology):</strong> A U.S. framework that helps manage and reduce cybersecurity risk with a set of standards, guidelines, and best practices.</li>
+    <li><strong>ISO 27001:</strong> An international standard for information security management systems (ISMS).</li>
+    <li><strong>CIS Controls:</strong> Prioritized best practices to block known attack vectors and improve cyber hygiene.</li>
+    <li><strong>COBIT:</strong> A governance framework for enterprise IT focused on aligning IT goals with business strategy.</li>
+  </ul>
+
+  <h3>Privacy & Compliance Laws</h3>
+  <ul>
+    <li><strong>GDPR (General Data Protection Regulation):</strong> A European Union regulation that gives users control over their personal data and sets strict rules on how data is stored and processed.</li>
+    <li><strong>HIPAA:</strong> U.S. law that safeguards medical information and patient privacy.</li>
+    <li><strong>CCPA (California Consumer Privacy Act):</strong> U.S. law that gives California residents more control over personal data.</li>
+    <li><strong>PCI-DSS:</strong> Payment Card Industry Data Security Standard — protects cardholder data.</li>
+  </ul>
+
+  <h3>Why It Matters</h3>
+  <ul>
+    <li>Ensures consistent cybersecurity practices</li>
+    <li>Builds trust with customers and clients</li>
+    <li>Helps avoid legal and financial penalties</li>
+    <li>Improves audit readiness and incident response</li>
+  </ul>
+  <p>Compliance is not just about avoiding fines — it's about protecting user data, maintaining trust, and showing your commitment to digital responsibility.</p>
+</section>
+<canvas id="cursorTrailCanvas"></canvas>
+<footer>
+  <div class="footer-content">
+    <p>© 2025 Cybersecurity Blog. All rights reserved.</p>
+    <nav class="footer-nav">
+      <a href="#top">Home</a>
+      <a href="#Cybersecurity-Basics">Basics</a>
+      <a href="#Malware-Types">Malware</a>
+      <a href="#Phishing-Attacks">Phishing</a>
+      <a href="#Network-Security">Network</a>
+      <a href="#Cybersecurity-Careers">Careers</a>
+      <a href="#Secure-Coding">Coding</a>
+      <a href="#AI-in-Cybersecurity">AI</a>
+      <a href="#Security-Frameworks">Compliance</a>
+    </nav>
+  </div>
+  <button id="scrollTopBtn" title="Go to top">↑</button>
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" aria-label="Scroll to top" 
+    style="
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #00ff96;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 24px;
+      color: black;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,255,150,0.6);
+      display: none;
+      z-index: 10000;
+    ">
+    ↑
+  </button>
+</footer>
+<script>
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll('.topic-section').forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        section.classList.add('reveal');
+      }
+    });
+  });
+</script>
+<script>
+  scrollTopBtn.addEventListener('click', () => {window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+<script>
+  // Add keyboard accessibility for swiper slides (Enter key triggers scroll)
+  document.querySelectorAll('.swiper-slide').forEach(slide => {
+    slide.setAttribute('tabindex', '0'); // Make focusable
+    slide.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        slide.click();
+      }
+    });
+  });
+</script>
+  <script>
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+<script>
+  const slideToSectionMap = {
+    0: "Cybersecurity-Basics",
+    1: "Malware-Types",
+    2: "Phishing-Attacks",
+    3: "Network-Security",
+    4: "Cybersecurity-Careers",
+    5: "Secure-Coding",
+    6: "AI-in-Cybersecurity",
+    7: "Security-Frameworks"
+  };
+
+  document.querySelectorAll('.swiper-slide').forEach((slide, index) => {
+    slide.addEventListener('click', () => {
+      const targetId = slideToSectionMap[index];
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+<script>
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const particles = [];
+const particleCount = 60;
+for (let i = 0; i < particleCount; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 2 + 1,
+    dx: (Math.random() - 0.5) * 0.4,
+    dy: (Math.random() - 0.5) * 0.4,
+    alpha: Math.random() * 0.3 + 0.1,
+    direction: Math.random() > 0.5 ? 1 : -1
+  });
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (const p of particles) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0, 255, 150, ${p.alpha})`;
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx = -p.dx;
+    if (p.y < 0 || p.y > canvas.height) p.dy = -p.dy;
+  }
+  requestAnimationFrame(drawParticles);
+}
+
+drawParticles();
+</script>
+<script>
+  const text = "Cybersecurity Blog";
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typed-text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100);
+    }
+  }
+  window.onload = typeWriter;
+</script>
+<script>
+  document.querySelectorAll('.swiper-slide').forEach((card) => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.transform = `translate(${(x - rect.width / 2) / 15}px, ${(y - rect.height / 2) / 15}px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `translate(0, 0)`;
+    });
+  });
+</script>
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: false,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      480: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 }
+    }
+  });
+</script>
+<script>
+const glassCards = document.getElementById('glassCards');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+
+nextBtn.addEventListener('click', () => {
+  glassCards.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
+prevBtn.addEventListener('click', () => {
+  glassCards.scrollBy({ left: -300, behavior: 'smooth' });
+});
+
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
+<script>
+function scrollToSection(sectionId) {
+  const target = document.getElementById(sectionId);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
+</body>
+</html>
