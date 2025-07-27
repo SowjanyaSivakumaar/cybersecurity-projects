@@ -3,10 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Cybersecurity Awareness Portal</title>
   <!-- Google Fonts: Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
+    @media (max-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+  }
+
+  nav a {
+    margin: 0;
+  }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 * {
@@ -23,13 +37,15 @@ body {
   overflow-x: hidden;
 }
 h1 {
-margin-bottom: 20px;
-margin-left: 12.7cm;
-margin-top: 20px;
-margin-right: 12cm;
-color: #ffffff;
-background-color: #000000;
+  margin: 20px auto 20px auto;  /* top right bottom left */
+  max-width: 90%;
+  text-align: center;
+  color: #ffffff;
+  background-color: #000000;
+  padding: 10px 0;
+  border-radius: 6px;
 }
+
 h1:hover {
   color: #767e05;
 }
